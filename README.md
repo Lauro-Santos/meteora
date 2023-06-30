@@ -1,6 +1,6 @@
 # Meteora Project
 
-This project is a responsive website and e-commerce platform developed as part of the Meteora challenge. The challenge was proposed by Alura, and the goal was to create a user-friendly and visually appealing online store for Meteora, a timeless and gender-neutral clothing e-commerce company.
+This project is a responsive website and e-commerce platform developed as part of the Alura Challenges - Front-End. The challenge was proposed by Alura, and the goal was to create a user-friendly and visually appealing online store for Meteora, a timeless and gender-neutral clothing e-commerce company.
 
 ## Technologies Used
 
