@@ -20,6 +20,7 @@ This project is a responsive website and e-commerce platform developed as part o
 - Footer: Provides essential website information for easy reference.
 
 ![image of project](https://raw.githubusercontent.com/Lauro-Santos/meteora/main/public/isolated_tablet_laptop_and_smartphone_composition.png)
+![Alura Challenges Logo](https://raw.githubusercontent.com/Lauro-Santos/meteora/fc313a1aa8820551f63a70f55c2b21135308e210/public/logo-challenges-front-end.1686744881.svg)
 
 ## Setup and Usage
 
