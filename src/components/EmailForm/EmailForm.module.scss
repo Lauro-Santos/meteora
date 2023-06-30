@@ -1,0 +1,70 @@
+@import "../../styles/variables";
+
+.newsletter {
+    padding: 25px;
+
+    .newsletter__form {
+        border: 1px solid $gray;
+        padding: 24px 16px;
+
+        p {
+            font-family: $default-font;
+            text-align: center;
+            padding: 0 8px;
+        }
+
+        .newsletter__email__container {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+
+            input {
+                height: 38px;
+                border: 1px solid #000;
+                border-right: none;
+                padding-left: 15px;
+                outline: none;
+
+                &::placeholder {
+                    font-family: $default-font;
+                }
+
+                &:focus {
+                    border-color: $purple;
+                }
+            }
+
+            .submit {
+                width: 84px;
+                color: #fff;
+                font-family: $default-font;
+                font-weight: 500;
+                border: none;
+                background-color: $purple;
+                cursor: pointer;
+                outline: none;
+
+                &:focus {
+                    border: 1px solid #000;
+                }
+
+                &:hover {
+                    border: 1px solid #000;
+                }
+    
+                &:active {
+                    background-color: #000;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1300px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .newsletter__form {
+            width: 45%;
+        }
+    }
+}

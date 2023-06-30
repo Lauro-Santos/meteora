@@ -1,0 +1,22 @@
+@import "../../styles/variables";
+
+.footer {
+    background-color: #000;
+    min-height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        color: #fff;
+        font-family: $default-font;
+        font-size: $default-font-size - 3;
+        text-align: center;
+        margin: 0;
+        width: 50%;
+
+        @media (min-width: 768px) {
+            width: 55%;
+        }
+    }
+}

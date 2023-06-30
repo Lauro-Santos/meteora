@@ -1,0 +1,72 @@
+@import "../../styles/variables";
+
+.facilities {
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h3 {
+        color: #fff;
+        font-family: $default-font;
+        font-weight: 500;
+        font-size: $default-font-size * 1.8;
+        text-align: center;
+        margin: 0;
+        padding-top: 32px;
+    }
+
+    .facilities__conteiner {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        max-width: 80%;
+
+        .ease {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 24px;
+            width: 100%;
+
+            img {
+                width: 56px;
+                height: 56px;
+            }
+
+            .ease__text__container {
+                width: 60%;
+
+                h4 {
+                    color: $green;
+                    font-family: $default-font;
+                    font-weight: 700;
+                    font-size: $default-font-size;
+                }
+
+                p {
+                    color: #fff;
+                    font-family: $default-font;
+                    font-weight: 400;
+                    font-size: $default-font-size / 1.2;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1300px) {
+        .facilities__conteiner {
+            flex-direction: row;
+
+            .ease {
+                img {
+                    width: 72px;
+                    height: 72px;
+                }
+            }
+        }
+    }
+}

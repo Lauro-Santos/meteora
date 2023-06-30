@@ -1,0 +1,95 @@
+@import "../../styles/variables";
+
+.products__section {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+
+    .products__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        list-style: none;
+        gap: 32px;
+
+        .product {
+            width: 323px;
+            height: auto;
+            border: 1px solid $gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            img {
+                width: 100%;
+            }
+            .product__info__container {
+                padding: 0 16px 16px 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: space-between;
+                height: 100%;
+                font-family: $default-font;
+
+                h4 {
+                    margin: 13px 0;
+                }
+                p {
+                    margin: 0 0 16px 0;
+                }
+                button {
+                    text-decoration: none;
+                    color: #fff;
+                    padding: 9px 16px;
+                    border: none;
+                    outline: none;
+                    background-color: $purple;
+
+                    &:hover {
+                        box-shadow: inset 0 0 0 1px #000;
+                    }
+
+                    &:active {
+                        background-color: #000;
+                    }
+                }
+
+                span {
+                    margin-bottom: 13px;
+                }
+
+                h4, span {
+                    font-weight: 700;
+                }
+            }
+        }
+        @media (min-width: 768px) {
+            display: grid;
+            align-items: start;
+            grid-template-columns: 1fr 1fr;
+
+            .product {
+                &:nth-child(2n-1){
+                    justify-self: end;
+                }
+            }
+        }
+        @media (min-width: 1300px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 90%;
+            column-gap: 0;
+
+            .product {
+                justify-self: center;
+                width: 350px;
+
+                &:nth-child(2n-1){
+                    justify-self: center;
+                }
+            }
+        }
+    }
+}
