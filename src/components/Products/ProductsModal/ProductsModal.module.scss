@@ -115,10 +115,10 @@
 
                 .options__colors {
                     border-top: 1px solid $gray;
-                    margin-top: 13px;
+                    margin-top: 10px;
 
                     .label__colors {
-                        margin: 13px 0;
+                        margin: 10px 0;
                         font-size: $default-font-size - 3;
                         font-weight: 700;
                     }
@@ -126,7 +126,7 @@
                     .colors__radio {
                         display: flex;
                         align-items: center;
-                        gap: 13px;
+                        gap: 10px;
 
                         .radio__container {
                             display: flex;
@@ -173,10 +173,10 @@
 
                 .options__sizes {
                     border-top: 1px solid $gray;
-                    margin-top: 13px;
+                    margin-top: 10px;
 
                     .label__sizes {
-                        margin: 13px 0;
+                        margin: 10px 0;
                         font-size: $default-font-size - 3;
                         font-weight: 700;
                     }
@@ -184,13 +184,13 @@
                     .sizes__radio {
                         display: flex;
                         align-items: center;
-                        gap: 13px;
+                        gap: 10px;
 
                         .radio__container {
                             display: flex;
                             flex-direction: column;
                             align-items: center;
-                            gap: 8px;
+                            gap: 2px;
 
                             input {
                                 appearance: none;
