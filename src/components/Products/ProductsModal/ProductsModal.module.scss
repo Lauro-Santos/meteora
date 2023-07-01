@@ -10,6 +10,7 @@
     z-index: 1000;
     border-radius: 4px;
     font-family: $default-font;
+    overflow: scroll;
 
     .box__header {
         display: flex;
