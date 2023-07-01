@@ -52,20 +52,20 @@ const ProductsModal = ({ onClose, selectedItem }) => {
                                         <label htmlFor="size1">P</label>
                                     </div>
                                     <div className={style.radio__container}>
-                                        <input type="radio" name="size" id="size1" />
-                                        <label htmlFor="size1">PP</label>
+                                        <input type="radio" name="size" id="size2" />
+                                        <label htmlFor="size2">PP</label>
                                     </div>
                                     <div className={style.radio__container}>
-                                        <input type="radio" name="size" id="size1" />
-                                        <label htmlFor="size1">M</label>
+                                        <input type="radio" name="size" id="size3" />
+                                        <label htmlFor="size3">M</label>
                                     </div>
                                     <div className={style.radio__container}>
-                                        <input type="radio" name="size" id="size1" />
-                                        <label htmlFor="size1">G</label>
+                                        <input type="radio" name="size" id="size4" />
+                                        <label htmlFor="size4">G</label>
                                     </div>
                                     <div className={style.radio__container}>
-                                        <input type="radio" name="size" id="size1" />
-                                        <label htmlFor="size1">GG</label>
+                                        <input type="radio" name="size" id="size5" />
+                                        <label htmlFor="size5">GG</label>
                                     </div>
                                 </div>
                             </div>
