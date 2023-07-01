@@ -6,6 +6,7 @@
     left: 0;
     border: none;
     max-height: 100vh;
+    height: 100vh;
     width: 100vw;
     z-index: 1000;
     border-radius: 4px;
@@ -80,11 +81,11 @@
 
         .box__product {
             border: 1px solid $gray;
-            padding: 0 16px;
+            padding: 0 13px;
 
             h5 {
                 font-weight: 700;
-                margin: 24px 0;
+                margin: 16px 0;
             }
 
             p {
@@ -94,14 +95,14 @@
             .containerInfo__text {
                 font-size: $default-font-size - 3;
                 margin: 0;
-                padding-bottom: 24px;
+                padding-bottom: 16px;
             }
 
             .containerInfo__price {
                 font-size: $default-font-size * 1.25;
                 font-weight: 500;
                 margin: 0;
-                padding-bottom: 24px;
+                padding-bottom: 16px;
             }
 
             .box__product__options {
@@ -113,10 +114,10 @@
 
                 .options__colors {
                     border-top: 1px solid $gray;
-                    margin-top: 16px;
+                    margin-top: 13px;
 
                     .label__colors {
-                        margin: 16px 0;
+                        margin: 13px 0;
                         font-size: $default-font-size - 3;
                         font-weight: 700;
                     }
@@ -124,7 +125,7 @@
                     .colors__radio {
                         display: flex;
                         align-items: center;
-                        gap: 16px;
+                        gap: 13px;
 
                         .radio__container {
                             display: flex;
@@ -171,10 +172,10 @@
 
                 .options__sizes {
                     border-top: 1px solid $gray;
-                    margin-top: 16px;
+                    margin-top: 13px;
 
                     .label__sizes {
-                        margin: 16px 0;
+                        margin: 13px 0;
                         font-size: $default-font-size - 3;
                         font-weight: 700;
                     }
@@ -182,7 +183,7 @@
                     .sizes__radio {
                         display: flex;
                         align-items: center;
-                        gap: 16px;
+                        gap: 13px;
 
                         .radio__container {
                             display: flex;
@@ -221,7 +222,7 @@
                 font-weight: 500;
                 font-family: $default-font;
                 letter-spacing: 0.457px;
-                margin-top: 16px;
+                margin-top: 13px;
                 padding: 0;
 
                 &:hover {
