@@ -1,269 +1,270 @@
 @import "../../../styles/variables";
 
 .productModal__box {
-    position: fixed;
-    top: 0;
-    left: 0;
-    border: none;
-    max-height: 100vh;
-    height: 100vh;
-    width: 100vw;
-    z-index: 1000;
-    border-radius: 4px;
-    font-family: $default-font;
-    overflow: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: none;
+  max-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  z-index: 1000;
+  border-radius: 4px;
+  font-family: $default-font;
+  overflow: scroll;
 
-    .box__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        background-color: #000;
-        padding: 18px;
-        gap: 20px;
+  .box__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000;
+    padding: 18px;
+    gap: 20px;
 
-        .title__container {
+    .title__container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      span {
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
+        background: url(../../../assets/icons/check-circle.svg);
+      }
+
+      h2 {
+        color: #fff;
+        margin: 0;
+        font-size: $default-font-size * 1.25;
+      }
+    }
+
+    .box__close {
+      background: none;
+      border: none;
+
+      svg {
+        width: 16px;
+        height: 16px;
+
+        path {
+          fill: #6c757d;
+        }
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        svg {
+          path {
+            fill: $green;
+          }
+        }
+      }
+    }
+  }
+
+  .box__main {
+    padding: 16px;
+    background-color: #fff;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+
+    img {
+      width: 100%;
+      height: 45%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .box__product {
+      border: 1px solid $gray;
+      padding: 0 13px;
+
+      h5 {
+        font-weight: 700;
+        margin: 16px 0;
+      }
+
+      p {
+        width: 100%;
+      }
+
+      .containerInfo__text {
+        font-size: $default-font-size - 3;
+        margin: 0;
+        padding-bottom: 16px;
+      }
+
+      .containerInfo__price {
+        font-size: $default-font-size * 1.25;
+        font-weight: 500;
+        margin: 0;
+        padding-bottom: 16px;
+      }
+
+      .box__product__options {
+        .options__seller {
+          color: $gray;
+          font-size: $default-font-size - 3;
+          margin: 0;
+        }
+
+        .options__colors {
+          border-top: 1px solid $gray;
+          margin-top: 10px;
+
+          .label__colors {
+            margin: 10px 0;
+            font-size: $default-font-size - 3;
+            font-weight: 700;
+          }
+
+          .colors__radio {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
 
-            span {
-                width: 32px;
-                min-width: 32px;
-                height: 32px;
-                background: url(../../../assets/icons/check-circle.svg);
+            .radio__container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+
+              input {
+                appearance: none;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                border: 1px solid #ccc;
+
+                &:checked {
+                  box-shadow: inset 0 0 0 3px $purple;
+                }
+              }
             }
 
-            h2 {
-                color: #fff;
-                margin: 0;
-                font-size: $default-font-size * 1.25;
+            &:nth-child(1) {
+              input {
+                background-color: #75d7f0;
+              }
             }
+
+            &:nth-child(2) {
+              input {
+                background-color: #f3f6f7;
+              }
+            }
+
+            &:nth-child(3) {
+              input {
+                background-color: #000000;
+              }
+            }
+          }
         }
 
-        .box__close {
-            background: none;
-            border: none;
+        .options__sizes {
+          border-top: 1px solid $gray;
+          margin-top: 10px;
 
-            svg {
-                width: 16px;
-                height: 16px;
+          .label__sizes {
+            margin: 10px 0;
+            font-size: $default-font-size - 3;
+            font-weight: 700;
+          }
 
-                path {
-                    fill: #6C757D;
+          .sizes__radio {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .radio__container {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              gap: 2px;
+
+              input {
+                appearance: none;
+                outline: none;
+                border: none;
+                cursor: pointer;
+                width: 13px;
+                height: 13px;
+                border-radius: 50%;
+                border: 1px solid #ccc;
+                background-color: #f3f6f7;
+
+                &:checked {
+                  box-shadow: inset 0 0 0 3px $purple;
                 }
+              }
             }
-
-            &:hover,
-            &:active,
-            &:focus {
-                svg {
-                    path {
-                        fill: $green;
-                    }
-                }
-            }
+          }
         }
+      }
+
+      button {
+        height: 37px;
+        width: 180px;
+        background-color: $purple;
+        color: #fff;
+        border: none;
+        font-weight: 500;
+        font-family: $default-font;
+        letter-spacing: 0.457px;
+        margin-top: 13px;
+        padding: 0;
+
+        &:hover {
+          box-shadow: inset 0 0 0 1px #000;
+        }
+
+        &:active {
+          background-color: #000;
+        }
+      }
     }
+  }
+
+  @media (min-width: 768px) {
+    width: 700px;
+    max-width: 100vw;
+    height: 580px;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    border: 2px;
+    overflow: hidden;
 
     .box__main {
-        padding: 16px;
-        background-color: #fff;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: start;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
 
-        img {
-            width: 100%;
-            height: 45%;
-            object-fit: cover;
-            object-position: top;
-        }
-
-        .box__product {
-            border: 1px solid $gray;
-            padding: 0 13px;
-
-            h5 {
-                font-weight: 700;
-                margin: 16px 0;
-            }
-
-            p {
-                width: 100%;
-            }
-
-            .containerInfo__text {
-                font-size: $default-font-size - 3;
-                margin: 0;
-                padding-bottom: 16px;
-            }
-
-            .containerInfo__price {
-                font-size: $default-font-size * 1.25;
-                font-weight: 500;
-                margin: 0;
-                padding-bottom: 16px;
-            }
-
-            .box__product__options {
-                .options__seller {
-                    color: $gray;
-                    font-size: $default-font-size - 3;
-                    margin: 0;
-                }
-
-                .options__colors {
-                    border-top: 1px solid $gray;
-                    margin-top: 10px;
-
-                    .label__colors {
-                        margin: 10px 0;
-                        font-size: $default-font-size - 3;
-                        font-weight: 700;
-                    }
-
-                    .colors__radio {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-
-                        .radio__container {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            gap: 2px;
-
-                            input {
-                                appearance: none;
-                                outline: none;
-                                border: none;
-                                cursor: pointer;
-                                width: 13px;
-                                height: 13px;
-                                border-radius: 50%;
-                                border: 1px solid #ccc;
-
-                                &:checked {
-                                    box-shadow: inset 0 0 0 3px $purple;
-                                }
-                            }
-
-                            &:nth-child(1) {
-                                input {
-                                    background-color: #75D7F0;
-                                }
-                            }
-
-                            &:nth-child(2) {
-                                input {
-                                    background-color: #F3F6F7;
-                                }
-                            }
-
-                            &:nth-child(3) {
-                                input {
-                                    background-color: #000000;
-                                }
-                            }
-                        }
-
-                    }
-                }
-
-                .options__sizes {
-                    border-top: 1px solid $gray;
-                    margin-top: 10px;
-
-                    .label__sizes {
-                        margin: 10px 0;
-                        font-size: $default-font-size - 3;
-                        font-weight: 700;
-                    }
-
-                    .sizes__radio {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-
-                        .radio__container {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            gap: 2px;
-
-                            input {
-                                appearance: none;
-                                outline: none;
-                                border: none;
-                                cursor: pointer;
-                                width: 13px;
-                                height: 13px;
-                                border-radius: 50%;
-                                border: 1px solid #ccc;
-                                background-color: #F3F6F7;
-
-                                &:checked {
-                                    box-shadow: inset 0 0 0 3px $purple;
-                                }
-                            }
-
-                        }
-
-                    }
-                }
-            }
-
-            button {
-                height: 37px;
-                width: 180px;
-                background-color: $purple;
-                color: #fff;
-                border: none;
-                font-weight: 500;
-                font-family: $default-font;
-                letter-spacing: 0.457px;
-                margin-top: 13px;
-                padding: 0;
-
-                &:hover {
-                    box-shadow: inset 0 0 0 1px #000;
-                }
-
-                &:active {
-                    background-color: #000;
-                }
-            }
-        }
-
-        @media (min-width: 768px) {
-            flex-direction: row;
-            align-items: flex-start;
-            justify-content: center;
-        }
+      img {
+        height: auto;
+      }
     }
-
-    @media (min-width: 768px) {
-        width: 700px;
-        max-width: 100vw;
-        height: 580px;
-        top: 50%;
-        left: 50%;
-        transform: translateY(-50%) translateX(-50%);
-        border: 2px;
-        overflow: hidden;
-    }
+  }
 }
 
 @media (min-width: 768px) {
-    .box__fade {
-        position: fixed;
-        min-height: 100vh;
-        min-width: 100vw;
-        background-color: rgba(0, 0, 0, 0.3);
-        top: 0;
-        left: 0;
-        z-index: 900;
-    }
+  .box__fade {
+    position: fixed;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    z-index: 900;
+  }
 }

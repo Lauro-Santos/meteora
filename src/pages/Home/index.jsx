@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Banner from "components/Banner";
 import Categories from "components/Categories";
 import EmailFrom from "components/EmailForm";
@@ -10,99 +11,132 @@ import Products from "components/Products";
 import ProductsModal from "components/Products/ProductsModal";
 
 const Home = () => {
-    // Definindo os estados usando o hook useState
-    const [showModalEmail, setShowModalEmail] = useState(false);
-    const [showModalProduct, setShowModalProduct] = useState(false);
-    const [selectedItem, setSelectedItem] = useState(null);
+  // Definindo os estados usando o hook useState
+  const [showModalEmail, setShowModalEmail] = useState(false);
+  const [showModalProduct, setShowModalProduct] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  // Array de objetos que representam os itens de produtos
+  const [items, setItems] = useState([]);
+  const [filteredItem, setfilteredItem] = useState("");
 
-    // Função para abrir o modal de produto
-    const openModalProduct = (item) => {
-        setSelectedItem(item);
-        setShowModalProduct(true);
+  const urlDb = "http://localhost:3000/products";
+
+  // Função para abrir o modal de produto
+  const openModalProduct = (item) => {
+    setSelectedItem(item);
+    setShowModalProduct(true);
+  };
+
+  // Função para fechar o modal de produto
+  const closeModalProduct = () => {
+    setShowModalProduct(false);
+  };
+
+  // Função para abrir o modal de e-mail
+  const openModalEmail = () => {
+    setShowModalEmail(true);
+  };
+
+  // Função para fechar o modal de e-mail
+  const closeModal = () => {
+    setShowModalEmail(false);
+  };
+
+  async function carregaDados() {
+    await axios.get(urlDb).then((response) => {
+      setItems(response.data);
+      setIsLoading(false);
+    });
+  }
+
+  function filterItens(category) {
+    const filteredItems = items.filter((item) => item.category === category);
+    setfilteredItem(filteredItems);
+    setIsLoading(false);
+  }
+
+  // Efeito colateral para lidar com eventos do teclado e scroll
+  useEffect(() => {
+    // Função para lidar com o pressionar da tecla Esc
+    const handleKeyDown = (event) => {
+      if (event.keyCode === 27) {
+        closeModal();
+        closeModalProduct();
+      }
     };
 
-    // Função para fechar o modal de produto
-    const closeModalProduct = () => {
-        setShowModalProduct(false);
+    if (showModalProduct) {
+      // Impedir rolagem da tela quando o modal de produto está aberto
+      document.body.style.overflow = "hidden";
+    } else {
+      // Habilitar rolagem da tela quando o modal de produto está fechado
+      document.body.style.overflow = "auto";
+    }
+
+    // Função para lidar com o evento de scroll
+    const handleScroll = () => {
+      closeModal();
     };
 
-    // Função para abrir o modal de e-mail
-    const openModalEmail = () => {
-        setShowModalEmail(true);
+    // Adicionar listeners de eventos
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("scroll", handleScroll);
+
+    // Remover listeners de eventos e restaurar a rolagem da tela quando o componente é desmontado
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("scroll", handleScroll);
+      document.body.style.overflow = "auto";
     };
+  }, [showModalProduct, showModalEmail]);
 
-    // Função para fechar o modal de e-mail
-    const closeModal = () => {
-        setShowModalEmail(false);
-    };
+  // Chamar a função carregaDados() quando o componente é montado
+  useEffect(() => {
+    carregaDados();
+  }, []);
 
-    // Efeito colateral para lidar com eventos do teclado e scroll
-    useEffect(() => {
-        // Função para lidar com o pressionar da tecla Esc
-        const handleKeyDown = (event) => {
-            if (event.keyCode === 27) {
-                closeModal();
-                closeModalProduct();
-            }
-        };
+  return (
+    <>
+      {/* Renderizar o componente Header */}
+      <Header />
 
-        if (showModalProduct) {
-            // Impedir rolagem da tela quando o modal de produto está aberto
-            document.body.style.overflow = "hidden";
-        } else {
-            // Habilitar rolagem da tela quando o modal de produto está fechado
-            document.body.style.overflow = "auto";
-        }
+      <main>
+        {/* Renderizar o componente Banner */}
+        <Banner />
 
-        // Função para lidar com o evento de scroll
-        const handleScroll = () => {
-            closeModal();
-        };
+        {/* Renderizar o componente Categories */}
+        <Categories filterItems={filterItens} />
 
-        // Adicionar listeners de eventos
-        window.addEventListener("keydown", handleKeyDown);
-        window.addEventListener("scroll", handleScroll);
+        {/* Renderizar o componente Products e passar a função openModalProduct como prop */}
+        <Products
+          openModal={openModalProduct}
+          items={filteredItem.length > 0 ? filteredItem : items}
+          loading={isLoading}
+        />
 
-        // Remover listeners de eventos e restaurar a rolagem da tela quando o componente é desmontado
-        return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-            window.removeEventListener("scroll", handleScroll);
-            document.body.style.overflow = "auto";
-        };
-    }, [showModalProduct, showModalEmail]);
+        {/* Renderizar o componente Facilities */}
+        <Facilities />
 
-    return (
-        <>
-            {/* Renderizar o componente Header */}
-            <Header />
+        {/* Renderizar o componente EmailForm e passar a função openModalEmail como prop */}
+        <EmailFrom openModal={openModalEmail} />
+      </main>
 
-            <main>
-                {/* Renderizar o componente Banner */}
-                <Banner />
+      {/* Renderizar o componente Footer */}
+      <Footer />
 
-                {/* Renderizar o componente Categories */}
-                <Categories />
+      {/* Renderizar o modal de produto apenas se showModalProduct for true */}
+      {showModalProduct && (
+        <ProductsModal
+          selectedItem={selectedItem}
+          onClose={closeModalProduct}
+        />
+      )}
 
-                {/* Renderizar o componente Products e passar a função openModalProduct como prop */}
-                <Products openModal={openModalProduct} />
-
-                {/* Renderizar o componente Facilities */}
-                <Facilities />
-
-                {/* Renderizar o componente EmailForm e passar a função openModalEmail como prop */}
-                <EmailFrom openModal={openModalEmail} />
-            </main>
-
-            {/* Renderizar o componente Footer */}
-            <Footer />
-
-            {/* Renderizar o modal de produto apenas se showModalProduct for true */}
-            {showModalProduct && <ProductsModal selectedItem={selectedItem} onClose={closeModalProduct} />}
-
-            {/* Renderizar o modal de e-mail apenas se showModalEmail for true */}
-            {showModalEmail && <EmailModal onClose={closeModal} />}
-        </>
-    )
-}
+      {/* Renderizar o modal de e-mail apenas se showModalEmail for true */}
+      {showModalEmail && <EmailModal onClose={closeModal} />}
+    </>
+  );
+};
 
 export default Home;

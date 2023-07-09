@@ -20,7 +20,7 @@ const ProductsModal = ({ onClose, selectedItem }) => {
                     </button>
                 </header>
                 <main className={style.box__main}>
-                    <img src={selectedItem.imgaPath} alt={selectedItem.title} />
+                    <img src={selectedItem.imgPath} alt={selectedItem.title} />
                     <div className={style.box__product}>
                         <h5>{selectedItem.title}</h5>
                         <p className={style.containerInfo__text}>{selectedItem.text}</p>
