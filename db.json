@@ -1,4 +1,5 @@
-[
+{
+    "products": [
       {
         "id": "1",
         "title": "Camiseta Conforto",
@@ -48,3 +49,4 @@
         "category": "bolsa"
       }
     ]
+  }
