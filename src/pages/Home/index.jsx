@@ -20,7 +20,7 @@ const Home = () => {
   const [items, setItems] = useState([]);
   const [filteredItem, setfilteredItem] = useState("");
 
-  const urlDb = "http://localhost:3000/products";
+  const urlDb = "https://raw.githubusercontent.com/Lauro-Santos/meteora-data/main/db.json";
 
   // Função para abrir o modal de produto
   const openModalProduct = (item) => {
@@ -45,7 +45,7 @@ const Home = () => {
 
   async function carregaDados() {
     await axios.get(urlDb).then((response) => {
-      setItems(response.data);
+      setItems(response.data.products);
       setIsLoading(false);
     });
   }
