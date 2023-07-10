@@ -23,7 +23,6 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [items, setItems] = useState([]);
   const [filteredItem, setFilteredItem] = useState([]);
-  const [isProductNotFound, setIsProductNotFound] = useState(false);
 
   const urlDb =
     "https://raw.githubusercontent.com/Lauro-Santos/meteora-data/main/db.json";
@@ -60,9 +59,7 @@ const Home = () => {
 
   const filterItems = (category) => {
     const filteredItems = items.filter((item) =>
-      removeAccents(item.category.toLowerCase()).includes(
-        removeAccents(category.toLowerCase())
-      )
+      item.category.toLowerCase() === category.toLowerCase()
     );
     setFilteredItem(filteredItems);
     setIsLoading(false);
@@ -81,7 +78,7 @@ const Home = () => {
 
     setFilteredItem(researchedItems);
     setIsLoading(false);
-    setIsProductNotFound(researchedItems.length === 0);
+    // setIsProductNotFound(researchedItems.length === 0);
   };
 
   useEffect(() => {
