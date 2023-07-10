@@ -21,6 +21,7 @@ const EmailFrom = ({ openModal }) => {
       setError("");
       // Chamar a função openModal para enviar o email
       openModal();
+      console.log("email enviado: "+email);
       setEmail('');
     }
   };
