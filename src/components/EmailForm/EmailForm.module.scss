@@ -15,7 +15,7 @@
 
         .newsletter__email__container {
             display: grid;
-            grid-template-columns: 2.5fr 1fr;
+            grid-template-columns: 3fr 0.5fr;
 
             input {
                 height: 38px;
@@ -53,6 +53,29 @@
     
                 &:active {
                     background-color: #000;
+                }
+            }
+        }
+
+        .error {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #fff;
+            font-weight: 700;
+            background-color: $purple;
+            margin: 0;
+            padding:10px 0;
+            width: 100%;
+            margin-top: 25px;
+
+            svg {
+                width: 25px;
+                height: 25px;
+
+                path {
+                    fill: #fff;
                 }
             }
         }
