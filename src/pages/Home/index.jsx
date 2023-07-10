@@ -9,18 +9,21 @@ import Footer from "components/Footer";
 import Header from "components/Header";
 import Products from "components/Products";
 import ProductsModal from "components/Products/ProductsModal";
+import Loading from "components/Loading";
 
 const Home = () => {
   // Definindo os estados usando o hook useState
   const [showModalEmail, setShowModalEmail] = useState(false);
   const [showModalProduct, setShowModalProduct] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   // Array de objetos que representam os itens de produtos
   const [items, setItems] = useState([]);
   const [filteredItem, setfilteredItem] = useState("");
+  const [isProductNotFound, setIsProductNotFound] = useState(false);
 
-  const urlDb = "https://raw.githubusercontent.com/Lauro-Santos/meteora-data/main/db.json";
+  const urlDb =
+    "https://raw.githubusercontent.com/Lauro-Santos/meteora-data/main/db.json";
 
   // Função para abrir o modal de produto
   const openModalProduct = (item) => {
@@ -44,16 +47,45 @@ const Home = () => {
   };
 
   async function carregaDados() {
-    await axios.get(urlDb).then((response) => {
+    setIsLoading(true); // Definir isLoading como true ao iniciar a carga de dados
+
+    try {
+      const response = await axios.get(urlDb);
       setItems(response.data.products);
-      setIsLoading(false);
-    });
+      setIsLoading(false); // Definir isLoading como false após a carga de dados ser concluída
+    } catch (error) {
+      console.error("Erro ao carregar os dados:", error);
+      setIsLoading(false); // Definir isLoading como false em caso de erro
+    }
   }
 
   function filterItens(category) {
-    const filteredItems = items.filter((item) => item.category === category);
+    const filteredItems = items.filter((item) =>
+      item.category.toLowerCase().includes(category.toLowerCase())
+    );
     setfilteredItem(filteredItems);
     setIsLoading(false);
+  }
+
+  //  Função para remover acentuações
+  function removeAccents(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  // Função de busca
+  function searching(event) {
+    const searchTerm = event.toLowerCase();
+    const researchedItems = items.filter((item) => {
+      const lowercaseTitle = removeAccents(item.title.toLowerCase());
+      const lowercaseCategory = removeAccents(item.category.toLowerCase());
+      return (
+        lowercaseTitle.includes(searchTerm) ||
+        lowercaseCategory.includes(searchTerm)
+      );
+    });
+
+    setfilteredItem(researchedItems);
+    setIsLoading(false);
+    setIsProductNotFound(researchedItems.length === 0); // Verificar se não foram encontrados produtos
   }
 
   // Efeito colateral para lidar com eventos do teclado e scroll
@@ -99,7 +131,7 @@ const Home = () => {
   return (
     <>
       {/* Renderizar o componente Header */}
-      <Header />
+      <Header searchReturn={searching} />
 
       <main>
         {/* Renderizar o componente Banner */}
@@ -109,11 +141,15 @@ const Home = () => {
         <Categories filterItems={filterItens} />
 
         {/* Renderizar o componente Products e passar a função openModalProduct como prop */}
-        <Products
-          openModal={openModalProduct}
-          items={filteredItem.length > 0 ? filteredItem : items}
-          loading={isLoading}
-        />
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Products
+            openModal={openModalProduct}
+            items={filteredItem.length !== 0 ? filteredItem : items}
+            loading={isLoading}
+          />
+        )}
 
         {/* Renderizar o componente Facilities */}
         <Facilities />

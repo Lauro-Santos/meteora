@@ -11,9 +11,9 @@ const Categories = ({ filterItems }) => {
     const [selectedCategory, setSelectedCategory] = useState('');
   
     const handleCategoryClick = (category) => {
-      setSelectedCategory(category);
-      filterItems(category);
-    };
+        setSelectedCategory(category);
+        filterItems(category); // Chama a função filterItems passando a categoria selecionada
+      };
 
     return (
         <section className={style.categories__section}>
