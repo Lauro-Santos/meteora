@@ -37,7 +37,7 @@ This project is licensed under the [MIT License](https://mit-license.org/). Feel
 
 ## Contact
 
-For any inquiries or additional information, please contact [Lauro Santos](emailto:lauros034+github@gmail.com).
+For any inquiries or additional information, please contact [Lauro Santos](mailto:lauros034+github@gmail.com).
 
 ---
 
@@ -82,7 +82,7 @@ Este projeto está licenciado sob a [Licença MIT](https://mit-license.org/). Si
 
 ## Contato
 
-Para dúvidas ou informações adicionais, entre em contato com [Lauro Santos](emailto:lauros034+github@gmail.com).
+Para dúvidas ou informações adicionais, entre em contato com [Lauro Santos](mailto:lauros034+github@gmail.com).
 
 ---
 
